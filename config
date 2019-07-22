@@ -158,12 +158,36 @@ bar {
 # Added in
 
 exec volumeicon
+exec volumeicon
+exec volumeicon
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% 
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle 
 
+bindsym F6 exec xbacklight -inc 3
+bindsym F5 exec xbacklight -dec 3
+
+exec --no-startup-id pulseaudio 
 exec --no-startup-id guake
+exec ibus-daemon -drx
+exec --no-startup-id indicator-stickynotes
+
 for_window [instance="guake"] floating enable
+for_window [instance="pavucontrol"] floating enable
 
 bindsym $mod+Tab workspace back_and_forth
+bindsym mod1+Tab workspace back_and_forth
+bindsym Menu workspace back_and_forth
+
+bindsym $mod+z move scratchpad
+bindsym $mod+x scratchpad show
+
+bindsym F10 exec --no-startup-id pavucontrol
+
+bindsym F3 exec nmcli radio wifi off && sleep 5 && nmcli radio wifi on
+bindsym Pause exec xterm -e vim ~/.config/i3/config
+
+# pactl list short sinks
+# pactl set-default-sink 
+# pavucontrol
